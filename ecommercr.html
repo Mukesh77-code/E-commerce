@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sneakers - Curated Footwear</title>
+    <link rel="stylesheet" href="ecommerce.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Sneakers</div>
+        <nav class="menu">
+            <a href="#products">Shop</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="icons">
+            <div class="cart-container" onclick="toggleCartModal()">
+                <i class="fas fa-shopping-cart cart-icon"></i>
+                <span id="cart-count">0</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1517596958444-1284d720b080?q=80&w=1287&auto=format&fit=crop" alt="User Avatar" class="user-icon"/>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="animate-in">Crafted for the Urban Explorer</h1>
+            <p class="animate-in">Discover a collection where style meets sustainability.</p>
+            <button class="btn-primary animate-in" onclick="showSection('products')">Explore Now</button>
+        </div>
+    </section>
+
+    <section class="container" id="products">
+        <h2 class="section-title fade-in">Latest Drops</h2>
+        
+        <div class="filter-bar fade-in">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="men">Men's</button>
+            <button class="filter-btn" data-category="women">Women's</button>
+        </div>
+
+        <div id="product-grid" class="product-grid fade-in">
+            </div>
+    </section>
+
+    <section class="container about-us-section" id="about">
+        <div class="about-us-content fade-in">
+            <img src="https://images.unsplash.com/photo-1606900486332-9c316717a637?q=80&w=1287&auto=format&fit=crop" alt="About Us" class="about-image">
+            <div class="about-text">
+                <h2 class="section-title">Our Philosophy</h2>
+                <p>At Sneakers, we believe that great design and ethical production go hand in hand. We are a collective of designers and innovators passionate about creating footwear that is both beautiful and sustainable. Every pair is crafted with the highest attention to detail, using premium materials sourced responsibly to minimize our environmental footprint. Our mission is to provide shoes that not only look good and feel great but also make a positive impact on the world.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container why-choose-us-section" id="features">
+        <h2 class="section-title fade-in">Why Choose Our Sneakers</h2>
+        <div class="features-grid fade-in">
+            <div class="feature-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Eco-Conscious Materials</h3>
+                <p>We use recycled and sustainable materials to reduce our ecological impact, without compromising on quality.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-star-half-alt"></i>
+                <h3>Unmatched Comfort</h3>
+                <p>Our innovative designs and ergonomic insoles ensure all-day comfort, whether you're running errands or on an adventure.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Ethically Made</h3>
+                <p>Every pair is produced in certified factories, ensuring fair wages and safe working conditions for all our artisans.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-truck"></i>
+                <h3>Free & Fast Shipping</h3>
+                <p>We offer complimentary expedited shipping on all orders, because we believe your new favorite shoes shouldn't keep you waiting.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container product-detail-section hidden" id="product-detail">
+        <button class="back-button" onclick="showSection('products')"><i class="fas fa-arrow-left"></i> Back to Products</button>
+        <div class="product-detail-content">
+            <div class="image-gallery">
+                <img id="detail-main-image" src="" alt="Product Main Image" />
+                <div class="thumbnails" id="detail-thumbnails">
+                    </div>
+            </div>
+            <div class="details">
+                <p class="brand">Sneakers Co.</p>
+                <h1 id="detail-title"></h1>
+                <p class="description" id="detail-description"></p>
+                <div class="price-block">
+                    <span class="price" id="detail-price"></span>
+                    <span class="discount">50% Off</span>
+                    <span class="old-price" id="detail-old-price"></span>
+                </div>
+                <div class="cart-controls">
+                    <div class="quantity">
+                        <button onclick="decrementQuantity()">−</button>
+                        <span id="detail-quantity">1</span>
+                        <button onclick="incrementQuantity()">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCartFromDetail()">
+                        <i class="fas fa-shopping-cart"></i> Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title text-light fade-in">What Our Customers Say</h2>
+            <div class="testimonial-grid fade-in">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"These sneakers are a game-changer. The quality and design are unmatched. I've received so many compliments!"</p>
+                    <p class="testimonial-author">- Alex Johnson</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Fast shipping and incredible comfort. I've found my new favorite brand. Highly recommend!"</p>
+                    <p class="testimonial-author">- Maria Lee</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The website is so easy to navigate and the styles are amazing. My sneakers arrived beautifully packaged."</p>
+                    <p class="testimonial-author">- Chris Evans</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="toggleCartModal()">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items-list"></div>
+            <div class="cart-summary">
+                <p>Total Items: <span id="cart-modal-total-items">0</span></p>
+                <p>Total Price: <span id="cart-modal-total-price">$0.00</span></p>
+            </div>
+            <button class="btn-primary checkout-button">Proceed to Checkout</button>
+        </div>
+    </div>
+    
+    <section class="newsletter-section" id="contact">
+        <div class="container">
+            <div class="newsletter-content fade-in">
+                <div class="newsletter-text">
+                    <h3>Stay in the Loop</h3>
+                    <p>Get exclusive access to new drops and special offers.</p>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address">
+                    <button class="btn-primary">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <div class="logo">Sneakers</div>
+                <p>Your ultimate destination for the latest and most stylish sneakers. Quality and comfort in every step.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Sneakers. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
